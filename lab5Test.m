@@ -27,24 +27,20 @@ sigVec = myLinearChirp(timeVec, A, a1);
 
 % FFT Part
 
-% Len of Data 
-dataLen = sigVec(end) - sigVec(1);
-% DFT sample corresponding to Nyquist Freq
-kNyq = floor(nSamples/2) + 1; 
-
-% + FFT freq
-posFreq = (0 : (kNyq-1) * (1/length(sigVec)));
-
-% FFT itself 
+%Plot the periodogram
+%--------------
+%Length of data 
+dataLen = timeVec(end)-timeVec(1);
+%DFT sample corresponding to Nyquist frequency
+kNyq = floor(nSamples/2)+1;
+% Positive Fourier frequencies
+posFreq = (0:(kNyq-1))*(1/dataLen);
+% FFT of signal
 fftSig = fft(sigVec);
-
-% Remove negativity 
+% Discard negative frequencies
 fftSig = fftSig(1:kNyq);
 
-% plot
+%Plot periodogram
 figure;
-plot(posFreq, abs(fftSig));
-
-
-
+plot(posFreq,abs(fftSig));
 

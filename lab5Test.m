@@ -21,8 +21,8 @@ nSamples = length(timeVec);
 sigVec = myLinearChirp(timeVec, A, a1);
 
 % Plot the data
-% figure;
-% plot(timeVec, sigVec)
+figure;
+plot(timeVec, sigVec)
 
 
 % FFT Part

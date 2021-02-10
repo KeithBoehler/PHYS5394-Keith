@@ -2,6 +2,10 @@
 % Linear Chirp
 
 % Variable place holders
+% Intent: To create a function that generates a linear chirp sine wave. 
+% Precond: Have in memory a value for a signal to noise ratio
+%          Data that is changing dynamicly with time.
+% PostCond: A linear chip will be returned. 
 
 function linCh = myLinearChirp(dataX, snr, coef)
     % TO DO

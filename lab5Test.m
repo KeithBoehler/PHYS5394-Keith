@@ -36,7 +36,9 @@ fftSig = fftSig(1:kNyq);
 %Plot periodogram
 figure;
 plot(posFreq,abs(fftSig));
-
+title('periodogram');
+xlabel('samples');
+ylabel('FFT');
 % Part 2 of Lab 5
 % Building 3 sine waves from table in slides
 
@@ -54,6 +56,9 @@ plt1 = fftfilt(b, S);
 figure;
 hold on;
 plot(plt1);
+title('Low Pass Filter');
+xlabel('samples');
+ylabel('FFT');
 
 % High Pass
 filtOrder = 30;
@@ -63,7 +68,9 @@ b = fir1(filtOrder, (100/2) / (sampFreq/2), 'high');
 plt1 = fftfilt(b, S);
 figure;
 hold on;
-plot(plt1);
+plot(plt1);title('High Pass Filter');
+xlabel('samples');
+ylabel('FFT');
 
 % Band pass
 
@@ -75,8 +82,9 @@ plt1 = fftfilt(b, S);
 figure;
 hold on;
 plot(plt1);
-
-
+title('Bandpass Filter');
+xlabel('samples');
+ylabel('FFT');
 
 
 

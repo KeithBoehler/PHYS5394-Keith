@@ -1,5 +1,5 @@
-% Test Script for lab 3
-
+% Test Script for lab 5
+% Setting up a wave to fft on
 % Signal Params
 a1 = 10;
 a2 = 3;
@@ -16,17 +16,10 @@ timeVec = 0:sampleIntervel:1.0;
 
 % Number of samples
 nSamples = length(timeVec);
-
-% Generate the sig
 sigVec = myLinearChirp(timeVec, A, a1);
 
-% Plot the data
-figure;
-plot(timeVec, sigVec)
-
-
 % FFT Part
-
+timeVec = 0:sampleIntervel:1.0;
 %Plot the periodogram
 %--------------
 %Length of data 
@@ -43,4 +36,51 @@ fftSig = fftSig(1:kNyq);
 %Plot periodogram
 figure;
 plot(posFreq,abs(fftSig));
+
+% Part 2 of Lab 5
+% Building 3 sine waves from table in slides
+
+s1 = mySine(1024, 100, 10, 0, 1);
+s2 = mySine(1024, 200, 5, pi/6, 1);
+s3 = mySine(1024, 300, 2.5, pi/4, 1);
+S = s1 + s2 + s3;
+
+% Low pass filter
+filtOrder = 30;
+maxFreq = 300;
+sampFreq = 1024;
+b = fir1(filtOrder, (100/2) / (sampFreq/2), 'low');
+plt1 = fftfilt(b, S);
+figure;
+hold on;
+plot(plt1);
+
+% High Pass
+filtOrder = 30;
+maxFreq = 300;
+sampFreq = 1024;
+b = fir1(filtOrder, (100/2) / (sampFreq/2), 'high');
+plt1 = fftfilt(b, S);
+figure;
+hold on;
+plot(plt1);
+
+% Band pass
+
+filtOrder = 30;
+maxFreq = 300;
+sampFreq = 1024;
+b = fir1(filtOrder, (100/2) / (sampFreq/2), 'bandpass');
+plt1 = fftfilt(b, S);
+figure;
+hold on;
+plot(plt1);
+
+
+
+
+
+
+
+
 

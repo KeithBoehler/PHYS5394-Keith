@@ -24,10 +24,19 @@ sigVec = myLinearChirp(timeVec, A, a1);
 % F => Frequency 
 % T => Time
 
-[S, F, T] = spectrogram(sigVec, 125, 124, [], sampFreq);
+nSegments = 125;
+nSamples = 124;
+[S, F, T] = spectrogram(sigVec, nSegments, nSamples, [], sampFreq);
 figure;
 imagesc(T, F, abs(S)); axis xy;
 xlabel("Time (s)");
 ylabel("Frequency (Hz)");
 
-
+% Things to Note:
+% The number of samples to overlap must be less than the length 
+% of the segments.Things to note:
+% 
+% The length of the segments cannot be greater than the 
+% length of the input signal.
+%
+% 

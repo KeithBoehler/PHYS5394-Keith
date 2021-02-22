@@ -41,5 +41,12 @@ nTimeVec = 1:length(timeVec)/2;
 % Plots
 figure;
 plot(nTimeVec,fftSigHalf,'Marker','.','MarkerSize',24);
+xlabel('Time (s)');
+ylabel('Frequency (Hz)');
+title('Half Plot');
 
-
+figure;
+plot(nTimeVec,fftSig5,'Marker','.','MarkerSize',24);
+xlabel('Time (s)');
+ylabel('Frequency (Hz)');
+title('x5 Plot');

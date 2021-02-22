@@ -37,7 +37,9 @@ posFreq5 = (0:(nyFreq5-1))*(1/dataLen);
 fftSig5 = fft(sigVec);
 fftSig5 = fftSig5(1:nyFreq); % Letting go of Neg Freq
 
+nTimeVec = 1:length(timeVec)/2;
 % Plots
-
+figure;
+plot(nTimeVec,fftSigHalf,'Marker','.','MarkerSize',24);
 
 

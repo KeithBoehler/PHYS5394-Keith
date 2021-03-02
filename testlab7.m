@@ -19,6 +19,7 @@ for i = 1:trials;
    
 end
 
+% Ploting the normalized data
 figure;
 subplot(2,1,1), plot(uniformPDF), title('Uniform PDF'), xlabel('Trial'), ylabel('Value');
 subplot(2,1,2), histogram(uniformPDF, 'Normalization', 'pdf'), title('Histogram'), xlabel('Value'), ylabel('Probability');

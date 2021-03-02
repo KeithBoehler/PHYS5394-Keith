@@ -19,3 +19,10 @@ for i = 1:trials;
    
 end
 
+figure;
+subplot(2,1,1), plot(uniformPDF), title('Uniform PDF'), xlabel('Trial'), ylabel('Value');
+subplot(2,1,2), histogram(uniformPDF, 'Normalization', 'pdf'), title('Histogram'), xlabel('Value'), ylabel('Probability');
+figure;
+subplot(2,1,1), plot(gaussPDF), title('Normal PDF'), xlabel('Trial'), ylabel('Value');
+subplot(2,1,2), histogram(gaussPDF, 'Normalization', 'pdf'), title('Histogram'), xlabel('Value'), ylabel('Probability');
+

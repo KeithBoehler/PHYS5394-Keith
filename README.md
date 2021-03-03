@@ -1,6 +1,8 @@
 # PHYS5394-Keith
 I am a Physics student at UTRGV. 
 This repo is to manage and submit code for Phys 5394, Statistical Methods. 
+Email: Keith.Boehler01@utrgv.edu
+
 Learning objectives
 ****Understand the importance of data analysis in modern astronomy.
 *Manipulate signals anddata usingtransformationand filteringtechniques.

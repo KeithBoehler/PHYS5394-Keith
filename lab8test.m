@@ -18,3 +18,15 @@ for i=1:length(col1)
        mystDat2(i) = col2(i);
    end
 end
+% Puting them back together 
+data = [col1 col2];
+cleanDat = [cleanDat1 cleanDat2];
+mystDat = [mystDat1 mystDat2];
+
+% Estimating the power specral density using the clean data
+sampFreq = 1024; %Hz
+[pxx, f] = pwelch(col2, 256, [], [],sampFreq);
+figure;
+plot(f, pxx);
+xlabel('Freq (Hz)');
+ylabel('Power Specral Density');

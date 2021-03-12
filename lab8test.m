@@ -25,8 +25,63 @@ mystDat = [mystDat1 mystDat2];
 
 % Estimating the power specral density using the clean data
 sampFreq = 1024; %Hz
-[pxx, f] = pwelch(col2, 256, [], [],sampFreq);
+[pxx, f] = pwelch(cleanDat2, 256, [], [],sampFreq);
 figure;
 plot(f, pxx);
 xlabel('Freq (Hz)');
 ylabel('Power Specral Density');
+
+% Whittening filter
+b = fir2(500, f / (1024 / 2), sqrt(pxx));
+outNoise = fftfilt(b,col2) % Data has been whitten
+
+
+figure;
+subplot(2,1,1), plot(col1, outNoise);
+title('proccessed data');
+xlabel('time (s)');
+ylabel('Amplitude');
+
+subplot(2,1,2);
+plot(col1, col2);
+title('raw data');
+xlabel('time (s)');
+ylabel('Amplitude');
+
+%% Waterfall plots (spectrogram )
+% Norm for two sides
+wData = sqrt(sampFreq) * fftfilt(b, col2);
+window = floor(1.1 * sampFreq); % Legnth times sampFreq
+overlap = floor(1.0 * sampFreq); % Legnth times sampFreq
+
+%[SR, FR, TR] = spectrogram(wData, window, overlap, [], sampFreq); % Raw data
+[SW, FW, TW] = spectrogram(wData, window, overlap, [], sampFreq); % Whitten data
+
+
+% Specto Plots
+% figure;
+% imagesc(TR, FR, abs(TR));
+% title('Raw Spectogram');
+% xlabel('time (s)');
+% ylabel('Freq (Hz)');
+
+figure;
+imagesc(TW, FW, abs(SW));
+title('Whitten Spectrogram');
+xlabel('time (s)');
+ylabel('Freq (Hz)');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

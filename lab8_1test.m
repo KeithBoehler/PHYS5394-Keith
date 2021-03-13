@@ -32,8 +32,8 @@ xlabel('Freq (Hz)');
 ylabel('Power Specral Density');
 
 % Whittening filter
-b = fir2(500, f / (1024 / 2), sqrt(pxx));
-outNoise = fftfilt(b,col2) % Data has been whitten
+b = fir2(500, f / (1024 / 2), 1./sqrt(pxx));
+outNoise = fftfilt(b,col2); % Data has been whitened
 
 
 figure;
@@ -66,8 +66,8 @@ overlap = floor(1.0 * sampFreq); % Legnth times sampFreq
 % ylabel('Freq (Hz)');
 
 figure;
-imagesc(TW, FW, abs(SW));
-title('Whitten Spectrogram');
+imagesc(TW, FW, abs(SW)); axis xy
+title('Whitened data Spectrogram');
 xlabel('time (s)');
 ylabel('Freq (Hz)');
 

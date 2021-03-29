@@ -13,7 +13,7 @@ for i = 1:a
     dataLIGO(i,2) = lowSen;
 end
 
-b = 50;
+b = 71;
 highSen = dataLIGO(b,2);
 
 for i = b:length(dataLIGO(:,1))
@@ -33,7 +33,7 @@ dataLIGO(upper,1) = 3000; %Hz
 % loglog(LIGOSen(:,1),LIGOSen(:,2))
 
 % Generate White Gaussian Noise realization and pass through LIGO PSD filter
-nSamples = 2*sampFreq; % 2 (s) * sampFreq
+nSamples = 20*sampFreq; % 2 (s) * sampFreq
 
 noise = randn(1,nSamples); % A vect for data
 
@@ -46,12 +46,15 @@ b = fir2(filtrOrdr,freqVals/(sampFreq/2),sqrt(psdVals));
 
 noiseLIGOReal = sqrt(sampFreq)*fftfilt(b,noise);
 
+figure;
+plot(noiseLIGOReal);
+
 % Estimate PSD w/ pwelch and plot
 
 [pxx, f] = pwelch(noiseLIGOReal, 600, [], [], sampFreq);
 
 figure;
-plot(f/1000,pxx);
+loglog(f/1000,pxx);
 title('Estimated PSD LIGO');
 xlabel('Frequency (kHz)');
 ylabel('PSD');
